@@ -1,0 +1,8 @@
+.DS_Store
+venv
+people
+smokers
+dataset.zip
+.env
+smokers_scheme.json
+people_scheme.json
