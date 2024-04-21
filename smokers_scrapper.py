@@ -4,6 +4,8 @@ import json
 import requests
 from dotenv import dotenv_values
 
+from nn.nn_for_website import analyze
+
 def get_smokers_json(api_key: str, page=1) -> None:
     url = "https://www.searchapi.io/api/v1/search"
     params = {

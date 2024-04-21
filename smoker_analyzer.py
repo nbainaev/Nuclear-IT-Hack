@@ -1,4 +1,7 @@
 import os
+
+from nn.nn_for_website import analyze
+
 import streamlit as st
 from streamlit_echarts import st_echarts
 from PIL import Image
@@ -13,9 +16,6 @@ def update_and_save_img(img_file_buffer) -> None:
 
     except AttributeError as error:
         return error
-
-def analyzer(camera_handler):
-    pass
 
 def draw_pie(data):
     options = {
@@ -72,18 +72,17 @@ if img_file_buffer is not None:
     try:
         with st.spinner('Обработка изображения…'):
             update_and_save_img(img_file_buffer)
-            # обработка и выгрузка нового экземпляра img_file_buffer by analyzer
-            pass
+            bounding, all_detected, smokers = analyze("img.jpg")
 
         with col_3:
             st.subheader(":blue[Статистика]")
-            draw_pie([{"value": 80, "name": "Не курит"}, {"value": 20, "name": "Курит"}])
+            draw_pie([{"value": smokers, "name": "Курят"}, {"value": all_detected, "name": "Не курят"}])
             # st.caption(f"Dominant race: {None}")
 
         with col_4:
             st.subheader(":blue[Обработанная фотография]")
-            # вывод новой фотографии после обработки
-            st.image(img_file_buffer)
+            st.image(bounding)
 
-    except TypeError:
-        st.warning("Объект не найден, загрузите другую фотографию!", icon="🚨")      
+    except TypeError as e:
+        st.warning("Объект не найден, загрузите другую фотографию!", icon="🚨")
+
