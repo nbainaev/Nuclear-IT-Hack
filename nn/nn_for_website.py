@@ -76,9 +76,6 @@ detector.multi_label = False
 detector.max_det = 30
 detector.classes = 0
 
-classificator  = torch.hub.load('pytorch/vision:v0.10.0', 'inception_v3', pretrained=False)
-classificator.fc = nn.Linear(2048, 2)
-
-classificator.load_state_dict(torch.load('inception_weights.pt', map_location=torch.device('cpu')))
+classificator = torch.load("inceptionv3_model.pt", map_location=torch.device('cpu'))
 
 # print(analyze("img.jpg"))
