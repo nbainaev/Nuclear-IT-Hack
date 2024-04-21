@@ -33,7 +33,7 @@ def get_people_json(api_key: str, page=1) -> None:
     url = "https://www.searchapi.io/api/v1/search"
     params = {
     "engine": "google_images",
-    "q": "a+man+on+the+street+in+full+height",
+    "q": "man+phone+talking",
     "api_key": api_key,
     "page": str(page)
     }
@@ -77,18 +77,18 @@ if __name__ == '__main__':
         "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)\
         AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.5005.167 YaBrowser/22.7.3.799 Yowser/2.5 Safari/537.36"
     }
-    page = 6
-    get_smokers_json(api_key, 4)
-    get_people_json(api_key, page)
+    page = 8
+    # get_smokers_json(api_key, 4)
+    get_people_json(api_key)
 
-    with open('smokers_scheme.json') as file:
-        smokers = json.load(file)
+    # with open('smokers_scheme.json') as file:
+    #     smokers = json.load(file)
 
-    if not os.path.exists("smokers"):
-        os.mkdir("smokers")
+    # if not os.path.exists("smokers"):
+    #     os.mkdir("smokers")
     
-    for smoker in smokers["images"]:
-        download_image(smoker["original"]["link"], f"smokers/{page}/" + f"{smoker["position"]}_{page}" + ".jpg", f"{smoker["position"]}_{page}", headers)
+    # for smoker in smokers["images"]:
+    #     download_image(smoker["original"]["link"], f"smokers/{page}/" + f"{smoker["position"]}_{page}" + ".jpg", f"{smoker["position"]}_{page}", headers)
 
     with open('people_scheme.json') as file:
         peoples = json.load(file)
