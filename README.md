@@ -24,3 +24,7 @@ Then you can check the site at local URL: http://localhost:8501
 ## Service
 
 Test link: https://zwc236lr-8501.euw.devtunnels.ms/
+
+## Description
+
+The "nn" filder contains neural network module. The smoker_analyze.py is a main script. The model_inceptionv3.pt is CNN.
