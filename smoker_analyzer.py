@@ -76,8 +76,7 @@ if img_file_buffer is not None:
 
         with col_3:
             st.subheader(":blue[Статистика]")
-            draw_pie([{"value": smokers, "name": "Курят"}, {"value": all_detected, "name": "Не курят"}])
-            # st.caption(f"Dominant race: {None}")
+            draw_pie([{"value": round(smokers / all_detected, 2) * 100, "name": "Курят"}, {"value": round(1 - smokers / all_detected, 2) * 100, "name": "Не курят"}])
 
         with col_4:
             st.subheader(":blue[Обработанная фотография]")

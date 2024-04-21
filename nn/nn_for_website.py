@@ -32,6 +32,7 @@ def predict_one_sample(model, inputs, device=DEVICE):
 
 def analyze(path):
     example_image = Image.open(path)
+    example_image.load()
     prediction = []
     probability = []
     bboxes = []
@@ -66,8 +67,6 @@ def analyze(path):
 
     return example_image, n_all_people, len(prediction)
 
-dir_name = "./inception_weights"
-
 detector = yolov5.load('yolov5s.pt')
 
 detector.conf = 0.25
@@ -80,4 +79,6 @@ detector.classes = 0
 classificator  = torch.hub.load('pytorch/vision:v0.10.0', 'inception_v3', pretrained=False)
 classificator.fc = nn.Linear(2048, 2)
 
-classificator.load_state_dict(torch.load('inception_weigths.pth', map_location=torch.device('cpu')))
+classificator.load_state_dict(torch.load('inception_weights.pt', map_location=torch.device('cpu')))
+
+# print(analyze("img.jpg"))
