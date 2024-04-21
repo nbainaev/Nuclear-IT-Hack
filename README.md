@@ -20,3 +20,7 @@ Developed by "Десептиконы"
 <code>streamlit run smoker_analyzer.py</code>
 
 Then you can check the site at local URL: http://localhost:8501
+
+## Service
+
+Test link: https://zwc236lr-8501.euw.devtunnels.ms/
